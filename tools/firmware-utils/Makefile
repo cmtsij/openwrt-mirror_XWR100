@@ -45,6 +45,7 @@ define Host/Compile
 	$(call cc,pc1crypt)
 	$(call cc,osbridge-crc)
 	$(call cc,wrt400n cyg_crc32)
+	$(call cc,xwr100 cyg_crc32)
 	$(call cc,mkdniimg)
 	$(call cc,mktitanimg)
 	$(call cc,mkchkimg)

@@ -236,6 +236,7 @@ platform_check_image() {
 	whr-hp-gn | \
 	wlae-ag300n | \
 	nbg460n_550n_550nh | \
+	xwr100 | \
 	unifi | \
 	unifi-outdoor | \
 	carambola2 )

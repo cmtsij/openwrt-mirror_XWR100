@@ -1185,6 +1185,14 @@ endef
 Image/Build/Zcomax/buildkernel=$(call MkuImageLzma,$(2),$(3) $(4))
 Image/Build/Zcomax/initramfs=$(call MkuImageLzma/initramfs,$(2),$(3) $(4))
 
+define Image/Build/XWR100
+	$(call MkuImageLzma,$(2),$(3))
+	$(call Sysupgrade/KRuImage,$(1),$(2),1507328,6291456)
+	if [ -e "$(call sysupname,$(1),$(2))" ]; then \
+		xwr100 $(KDIR_TMP)/vmlinux-$(2).uImage $(KDIR)/root.$(1) $(call factoryname,$(1),$(2)); \
+	fi
+endef
+
 define Image/Build/Zcomax
 	$(call Sysupgrade/RKuImage,$(1),$(2),1507328,6356992)
 	if [ -e "$(call sysupname,$(1),$(2))" ]; then \
@@ -1464,6 +1472,8 @@ $(eval $(call SingleProfile,WZRHP64K,64kraw,WZRHPAG300H,wzr-hp-ag300h,WZR-HP-AG3
 $(eval $(call SingleProfile,WZRHP64K,64kraw,WZRHPG450H,wzr-hp-g450h,WZR-HP-G450H,ttyS0,115200,WZR-HP-AG450H))
 $(eval $(call SingleProfile,WZRHP64K,64kraw,WZR600DHP,wzr-600dhp,WZR-HP-AG300H,ttyS0,115200,WZR-600DHP))
 $(eval $(call SingleProfile,WZRHP64K,64kraw,WZR450HP2,wzr-450hp2,WZR-450HP2,ttyS0,115200,WZR-450HP2))
+
+$(eval $(call SingleProfile,XWR100,64kraw,XWR100,xwr100,XWR100,ttyS0,115200,XWR100))
 
 $(eval $(call SingleProfile,Zcomax,64k,ZCN1523H28,zcn-1523h-2-8,ZCN-1523H-2,ttyS0,115200,$$(zcn1523h_mtdlayout)))
 $(eval $(call SingleProfile,Zcomax,64k,ZCN1523H516,zcn-1523h-5-16,ZCN-1523H-5,ttyS0,115200,$$(zcn1523h_mtdlayout)))
