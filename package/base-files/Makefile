@@ -150,6 +150,7 @@ define Package/base-files/install
 				echo "$$$${conffile##$(1)}" >> $(1)/CONTROL/conffiles; \
 		fi \
 	done
+	(cd $(TOPDIR) && $(TOPDIR)/scripts/diffconfig.sh) | gzip --stdout > $(1)/.config.gz
 endef
 
 ifneq ($(DUMP),1)
