@@ -1,0 +1,39 @@
+--- a/arch/mips/ath79/Kconfig
++++ b/arch/mips/ath79/Kconfig
+@@ -1086,6 +1086,16 @@ config ATH79_MACH_MYNET_REXT
+ 	select ATH79_DEV_WMAC
+ 	select ATH79_NVRAM
+ 
++config ATH79_MACH_XWR100
++	bool "Vizio XWR100 board support"
++	select SOC_AR71XX
++	select ATH79_DEV_ETH
++	select ATH79_DEV_AP9X_PCI if PCI
++	select ATH79_DEV_GPIO_BUTTONS
++	select ATH79_DEV_LEDS_GPIO
++	select ATH79_DEV_M25P80
++	select ATH79_DEV_USB
++
+ config ATH79_MACH_ZCN_1523H
+ 	bool "Zcomax ZCN-1523H support"
+ 	select SOC_AR724X
+--- a/arch/mips/ath79/Makefile
++++ b/arch/mips/ath79/Makefile
+@@ -150,6 +150,7 @@ obj-$(CONFIG_ATH79_MACH_WZR_HP_G300NH2)
+ obj-$(CONFIG_ATH79_MACH_WZR_HP_AG300H)	+= mach-wzr-hp-ag300h.o
+ obj-$(CONFIG_ATH79_MACH_WZR_HP_G450H)	+= mach-wzr-hp-g450h.o
+ obj-$(CONFIG_ATH79_MACH_WZR_450HP2)	+= mach-wzr-450hp2.o
++obj-$(CONFIG_ATH79_MACH_XWR100)		+= mach-xwr100.o
+ obj-$(CONFIG_ATH79_MACH_ZCN_1523H)	+= mach-zcn-1523h.o
+ obj-$(CONFIG_ATH79_MACH_CARAMBOLA2)	+= mach-carambola2.o
+ obj-$(CONFIG_ATH79_MACH_NBG6716)	+= mach-nbg6716.o
+--- a/arch/mips/ath79/machtypes.h
++++ b/arch/mips/ath79/machtypes.h
+@@ -197,6 +197,7 @@ enum ath79_mach_type {
+ 	ATH79_MACH_WZR_HP_G300NH2,	/* Buffalo WZR-HP-G300NH2 */
+ 	ATH79_MACH_WZR_HP_G450H,	/* Buffalo WZR-HP-G450H */
+ 	ATH79_MACH_WZR_450HP2,		/* Buffalo WZR-450HP2 */
++	ATH79_MACH_XWR100,		/* Vizio XWR100 */
+ 	ATH79_MACH_ZCN_1523H_2,		/* Zcomax ZCN-1523H-2-xx */
+ 	ATH79_MACH_ZCN_1523H_5,		/* Zcomax ZCN-1523H-5-xx */
+ };
